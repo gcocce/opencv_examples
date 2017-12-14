@@ -47,7 +47,8 @@ int main( int argc, char** argv )
 	printf( "Se crea la matriz \n");
 	
 	//cv::Mat imageWithData = cv::Mat(sz, 1, CV_8UC4, data).clone();
-	cv::Mat imageWithData = cv::Mat(640, 480, CV_8UC4, data);
+	//cv::Mat imageWithData = cv::Mat(640, 480, CV_8UC4, data);
+	cv::Mat imageWithData = cv::Mat(480, 640, CV_8UC3, data);
 	
 	if(!imageWithData.data){
 		printf( "No image data\n");
