@@ -34,29 +34,26 @@ int main( int argc, char** argv )
 	
 	int res=fread(data, sz, 1, fd);
 	
-	printf( "Se leyo el arhivo %d\n", res);
-	
-	printf( "Se intenta decodificar la imagen\n");
-	Mat img = imdecode(*data,1);
-	
-	printf( "Se intenta escribir la imagen decodificada\n");
-	
-	imwrite("./bytes1.png", img);
-	
-	
 	printf( "Se crea la matriz \n");
 	
-	//cv::Mat imageWithData = cv::Mat(sz, 1, CV_8UC4, data).clone();
-	//cv::Mat imageWithData = cv::Mat(640, 480, CV_8UC4, data);
 	cv::Mat imageWithData = cv::Mat(480, 640, CV_8UC3, data);
 	
 	if(!imageWithData.data){
 		printf( "No image data\n");
 	}
 	
+	fclose(fd);
+
+	printf( "generate filename\n");
+	
+	string filename;     
+	ostringstream buffer;  
+	buffer << argv[1] << ".png";      
+	filename = buffer.str();
+	
 	printf( "trying to generate png\n");
 	
-	imwrite("./bytes2.png", imageWithData);
+	imwrite(filename, imageWithData);
 
 	return 0;
 }
